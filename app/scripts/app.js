@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('minesweeperApp', [])
+angular.module('lazyBarista', [])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

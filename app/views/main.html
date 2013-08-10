@@ -1,9 +1,13 @@
 <div class="hero-unit">
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
+  <h1>
+    Lazy Barista?
+    <span class="btn" ng-click="randomizeReels()">Gimme a drink!</span>
+  </h1>
+
   <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
+    <li ng-repeat="reelPosition in reelPositions">{{reelPosition}}</li>
   </ul>
-  <p>installed.</p>
-  <h3>Enjoy coding! - Yeoman</h3>
+
+  <h2 ng-if="hasWon">You won!</h2>
+  <h2 ng-if="!hasWon">You loose! You have to get up and make your drink by yourself!</h2>
 </div>
