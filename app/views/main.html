@@ -1,7 +1,17 @@
 <h1>Lazy Barista?</h1>
 
+<div class="alert alert-block alert-success" ng-if="resultStatus === 1">
+  You won!
+</div>
+<div class="alert alert-block" ng-if="resultStatus === 0">
+  Drumming....
+</div>
+<div class="alert alert-block alert-error" ng-if="resultStatus === -1">
+  You loose! You have to get up and make your drink by yourself!
+</div>
+
 <div id="reels-container">
-  <div class="stage">
+  <div class="stage" ng-if="reelsValues">
     <div class="wheel backfaces" ng-repeat="reelValues in reelsValues track by $index" ng-class="'wheel-' + $index">
       <div class="tile"
           ng-repeat="reelValue in reelValues track by $index"
@@ -12,11 +22,6 @@
   </div>
 </div>
 
-<h3>
-  <span ng-if="hasWon">You won!</span>
-  <span ng-if="hasWon === false">You loose! You have to get up and make your drink by yourself!</span>
-</h3>
-
 <div class="text-center">
-  <span class="btn btn-run" ng-click="generateReels()">Gimme a<br />drink!</span>
+  <button class="btn btn-run" ng-click="generateReels()" ng-disabled="isButtonDisabled">Gimme a<br />drink!</button>
 </div>

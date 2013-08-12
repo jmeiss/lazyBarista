@@ -17,26 +17,25 @@ body
   font-size: 20px
 
 #reels-container
+  height: 400px
+  margin-left: 70px
   -webkit-perspective: 3000
   -webkit-perspective-origin: 50% 255px
 
 .stage
-  margin-left: 50px
-  width: 100%
-  height: 400px
   -webkit-transition: -webkit-transform 2s
   -webkit-transform-style: preserve-3d
 
 .wheel
-  margin: 150px auto 0
+  margin: 140px auto 0
   height: 100px
   -webkit-transform-style: preserve-3d
   &.wheel-0
-    -webkit-animation: spin 6s cubic-bezier(0, 0.3, 0, 0.5)
+    -webkit-animation: spin 2s cubic-bezier(0, 0.3, 0, 0.5)
   &.wheel-1
-    -webkit-animation: spin 7s cubic-bezier(0, 0.6, 0, 0.6)
+    -webkit-animation: spin 2.5s cubic-bezier(0, 0.6, 0, 0.6)
   &.wheel-2
-    -webkit-animation: spin 8s cubic-bezier(0, 0.3, 0, 0.5)
+    -webkit-animation: spin 3s cubic-bezier(0, 0.3, 0, 0.5)
   &.backfaces
     float: left
     width: 33.3%
@@ -56,10 +55,9 @@ body
   border: 1px solid white
   +border-radius(5px)
   -webkit-box-sizing: border-box
-  padding: 20px 0
+  padding: 20px 60px
   font-size: 20px
   text-align: center
   color: black
-  background-color: rgba(240, 240, 240, 0.6)
-  //-webkit-transition: -webkit-transform 2s, opacity 2s
+  background-color: rgba(240, 240, 240, 0.9)
   -webkit-backface-visibility: hidden
