@@ -1,39 +1,54 @@
 'use strict';
 
 angular.module('lazyBarista')
-  .controller('MainCtrl', function ($scope) {
-    $scope.hasWon     = undefined
+  .controller('MainCtrl', function ($scope, $timeout) {
     var reelsOptions  = [
-      // COFFEE             TEA             ESPRESSO
+      // COFFEE            TEA             ESPRESSO
       ['Coffe Maker',     'Teapot',       'Espresso Machine'],
       ['Coffee Filter',   'Tea Strainer', 'Espresso Tamper'],
       ['Coffee Grounds',  'Loose Tea',    'Ground Espresso Beans']
     ];
 
-    $scope.randomizeReels = function () {
+    $scope.generateReels = function () {
+      var i
+      var reelLength
       var currentRandomizedReelPosition
-      var allRandomizedReelPositions  = []
-      $scope.reelPositions            = []
-      $scope.hasWon                   = true
+      $scope.hasWon       = undefined
+      $scope.reelsValues  = []
 
       // Iterate through all reels
-      angular.forEach(reelsOptions, function (reel) {
-        // Randomize the position for the current reel
-        currentRandomizedReelPosition = Math.floor(Math.random() * reel.length)
+      angular.forEach(reelsOptions, function (reel, reelPos) {
+        reelLength                  = reel.length
+        $scope.reelsValues[reelPos] = []
 
-        // Store the randomized position in an array
-        allRandomizedReelPositions.push(currentRandomizedReelPosition)
+        // Iterate 10 times to fill reels
+        for (i = 0; i < 10; i++) {
+          // Randomize the position for the current reel
+          currentRandomizedReelPosition = Math.floor(Math.random() * reel.length)
 
-        // Get and store the current reel value to be displayed
-        $scope.reelPositions.push(reel[currentRandomizedReelPosition])
+          // Randomize the position for the current reel
+          $scope.reelsValues[reelPos][i] = reel[currentRandomizedReelPosition]
+        }
       })
 
+      $timeout(randomizeReels, 8100)
+    }
+
+    var randomizeReels = function () {
+      $scope.hasWon = true
+  
       // Iterate through all randomized reels positions
-      angular.forEach(allRandomizedReelPositions, function (reelPosition) {
-        // If reelPosition is not equal to first item of allRandomizedReelPositions array
+      angular.forEach($scope.reelsValues, function (reelValues) {
+        var firstReelLength   = $scope.reelsValues[0].length - 1
+        var currentReelLength = reelValues.length - 1
+        console.log($scope.reelsValues[0][firstReelLength])
+        console.log(reelValues[currentReelLength])
+        console.log('===')
+
+        // If last value of first wheel is not equal to last item of current reel
         // it means all reels positions are not equal so the lazy barista loose
         // and has to get up and make its drink by himself!
-        if (allRandomizedReelPositions[0] !== reelPosition) {
+        if ($scope.reelsValues[0][firstReelLength] !== reelValues[currentReelLength]) {
           $scope.hasWon = false
         }
       })

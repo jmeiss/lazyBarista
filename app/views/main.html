@@ -1,13 +1,22 @@
-<div class="hero-unit">
-  <h1>
-    Lazy Barista?
-    <span class="btn" ng-click="randomizeReels()">Gimme a drink!</span>
-  </h1>
+<h1>Lazy Barista?</h1>
 
-  <ul>
-    <li ng-repeat="reelPosition in reelPositions">{{reelPosition}}</li>
-  </ul>
+<div id="reels-container">
+  <div class="stage">
+    <div class="wheel backfaces" ng-repeat="reelValues in reelsValues track by $index" ng-class="'wheel-' + $index">
+      <div class="tile"
+          ng-repeat="reelValue in reelValues track by $index"
+          ng-style="{'-webkit-transform': 'rotateX(' + $index * 360 / reelValues.length + 'deg) translateZ(160px)'}">
+        {{reelValue}}
+      </div>
+    </div>
+  </div>
+</div>
 
-  <h2 ng-if="hasWon">You won!</h2>
-  <h2 ng-if="!hasWon">You loose! You have to get up and make your drink by yourself!</h2>
+<h3>
+  <span ng-if="hasWon">You won!</span>
+  <span ng-if="hasWon === false">You loose! You have to get up and make your drink by yourself!</span>
+</h3>
+
+<div class="text-center">
+  <span class="btn btn-run" ng-click="generateReels()">Gimme a<br />drink!</span>
 </div>
