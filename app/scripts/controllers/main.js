@@ -24,7 +24,7 @@ angular.module('lazyBarista')
     }
 
 
-    var randomizeReels = function () {      
+    var randomizeReels = function () {
       var i
       var reelLength
       var currentRandomizedReelPosition
@@ -50,7 +50,7 @@ angular.module('lazyBarista')
           // Oops... I gave the solution and there is not anymore magie :s 
           // We keep the last position of the current reel to compare it with other reels
           if (i === 0) {
-            allRandomizedReelPositions.push(currentRandomizedReelPosition)            
+            allRandomizedReelPositions.push(currentRandomizedReelPosition)
           }
         }
       })
