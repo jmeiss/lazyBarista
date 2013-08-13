@@ -14,6 +14,7 @@ angular.module('lazyBarista')
       ['Coffee Filter',   'Tea Strainer', 'Espresso Tamper'],
       ['Coffee Grounds',  'Loose Tea',    'Ground Espresso Beans']
     ]
+    var resultOptions = ['a cup of Coffee', 'a cup of Tea', 'an Espresso']
     
     $scope.isButtonDisabled = false
     
@@ -60,6 +61,7 @@ angular.module('lazyBarista')
       var allRandomizedReelPositionsLength  = allRandomizedReelPositions.length
       $scope.isButtonDisabled               = false
       $scope.resultStatus                   = STATUS.WIN
+      $scope.resultValue                    = resultOptions[allRandomizedReelPositions[0]]
 
       // Iterate through all randomized reels positions
       for (var i = 0; i < allRandomizedReelPositionsLength; i++) {
