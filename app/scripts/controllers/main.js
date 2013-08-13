@@ -10,7 +10,7 @@ angular.module('lazyBarista')
     }
     var reelsOptions = [
       // COFFEE            TEA             ESPRESSO
-      ['Coffe Maker',     'Teapot',       'Espresso Machine'],
+      ['Coffee Maker',    'Teapot',       'Espresso Machine'],
       ['Coffee Filter',   'Tea Strainer', 'Espresso Tamper'],
       ['Coffee Grounds',  'Loose Tea',    'Ground Espresso Beans']
     ]
@@ -46,9 +46,9 @@ angular.module('lazyBarista')
           // Set the result for the current reel
           $scope.reelsValues[reelPos][i] = reel[currentRandomizedReelPosition]
 
-          // Because reel will always stop at the last tile
+          // Because reel will always stop at the first tile
           // Oops... I gave the solution and there is not anymore magie :s 
-          // We keep the last position of the current reel to compare it with other reels
+          // We keep the first position of the current reel to compare it with other reels
           if (i === 0) {
             allRandomizedReelPositions.push(currentRandomizedReelPosition)
           }

@@ -1,12 +1,12 @@
 <h1>Lazy Barista?</h1>
 
-<div class="alert alert-block alert-success" ng-if="resultStatus === 1">
+<div ng-if="resultStatus === 1" class="alert alert-block alert-success">
   You won!
 </div>
-<div class="alert alert-block" ng-if="resultStatus === 0">
+<div ng-if="resultStatus === 0" class="alert alert-block">
   Drumming....
 </div>
-<div class="alert alert-block alert-error" ng-if="resultStatus === -1">
+<div ng-if="resultStatus === -1" class="alert alert-block alert-error">
   You loose! You have to get up and make your drink by yourself!
 </div>
 
@@ -15,7 +15,8 @@
     <div class="wheel backfaces" ng-repeat="reelValues in reelsValues track by $index" ng-class="'wheel-' + $index">
       <div class="tile"
           ng-repeat="reelValue in reelValues track by $index"
-          ng-style="{'-webkit-transform': 'rotateX(' + $index * 360 / reelValues.length + 'deg) translateZ(160px)'}">
+          ng-style="{'-webkit-transform': 'rotateX(' + $index * 360 / reelValues.length + 'deg) translateZ(160px)'}"
+          ng-class="reelValue | permalink">
         {{reelValue}}
       </div>
     </div>
